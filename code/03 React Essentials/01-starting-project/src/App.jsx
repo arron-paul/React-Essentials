@@ -38,7 +38,13 @@ function App() {
       <main>
         <section id="core-concepts">
           <h2>Time to get started!</h2>
-          <ul></ul>
+          <ul>
+            {/*
+              Using the spread syntax to unpack the object properties
+              and pass them as props to the CoreConcept component.
+            */}
+            <CoreConcept {...CORE_CONCEPTS[0]} />
+          </ul>
         </section>
       </main>
     </div>
