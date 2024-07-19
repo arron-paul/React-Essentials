@@ -3,9 +3,10 @@ import { CORE_CONCEPTS } from "./data";
 import Header from "./components/Header/Header";
 import CoreConcept from "./components/CoreConcept/CoreConcept";
 import TabButton from "./components/TabButton";
+import { EXAMPLES } from "./data.js";
 
 function App() {
-  const [selectedTopic, setSelectedTopic] = useState("Please click a button");
+  const [selectedTopic, setSelectedTopic] = useState("components");
   function handleSelect(selectedButton) {
     // selectedButton => 'components', 'jsx', 'props', or 'state'
     setSelectedTopic(selectedButton);
@@ -39,9 +40,11 @@ function App() {
             <TabButton onSelect={() => handleSelect("state")}>State</TabButton>
           </menu>
           <div id="tab-content">
-            <h3>{title}</h3>
-            <p></p>
-            <pre></pre>
+            <h3>{EXAMPLES[selectedTopic].title}</h3>
+            <p>{EXAMPLES[selectedTopic].description}</p>
+            <pre>
+              <code>{EXAMPLES[selectedTopic].code}</code>
+            </pre>
           </div>
         </section>
       </main>
