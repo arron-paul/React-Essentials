@@ -21,12 +21,20 @@ function Header() {
   );
 }
 
-function CoreConcept(props) {
+// Using object destructing.
+// Used in this case to destructure the first parameter of this function.
+
+// An object destructuring simply means that we can target the
+// different properties of the incoming object by name, since the
+// CORE_CONCEPTS object has properties that match the names of the props.
+
+// These curly braces have nothing to do with the CORE_CONCEPTS object passed in.
+function CoreConcept({ image, title, description }) {
   return (
     <li>
-      <img src={props.image} alt={props.title} />
-      <h3>{props.title}</h3>
-      <p>{props.description}</p>
+      <img src={image} alt={title} />
+      <h3>{title}</h3>
+      <p>{description}</p>
     </li>
   );
 }
