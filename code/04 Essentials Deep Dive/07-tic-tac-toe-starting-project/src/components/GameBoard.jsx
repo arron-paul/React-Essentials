@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { act, useState } from "react";
 
 const initialGameBoard = [
   [null, null, null],
@@ -6,7 +6,7 @@ const initialGameBoard = [
   [null, null, null],
 ];
 
-export default function GameBoard() {
+export default function GameBoard({ onSelectSquare, activePlayerSymbol }) {
   const [gameBoard, setGameBoard] = useState(initialGameBoard);
   function handleSelectSquare(rowIndex, colIndex) {
     setGameBoard((prevGameBoard) => {
@@ -14,9 +14,12 @@ export default function GameBoard() {
       const updatedBoard = [
         ...prevGameBoard.map((innerArray) => [...innerArray]),
       ];
-      updatedBoard[rowIndex][colIndex] = "X";
+      updatedBoard[rowIndex][colIndex] = activePlayerSymbol;
       return updatedBoard;
     });
+    // We call the function passed in as a prop from App.jsx
+    // This function has access to state in the App
+    onSelectSquare();
   }
   return (
     <ol id="game-board">
