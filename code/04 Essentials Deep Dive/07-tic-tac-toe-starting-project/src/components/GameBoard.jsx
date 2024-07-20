@@ -1,7 +1,5 @@
 export default function GameBoard({ onSelectSquare, board }) {
-  // 'deriving state'
-  // good practice to derive state from props
-
+  // Render the game board based on the current state passed as props
   return (
     <ol id="game-board">
       {board.map((row, rowIndex) => (

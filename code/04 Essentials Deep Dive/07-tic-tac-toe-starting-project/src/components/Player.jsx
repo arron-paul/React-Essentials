@@ -6,9 +6,11 @@ export default function Player({
   isActive,
   onChangedName,
 }) {
+  // Local state for player name and edit mode
   let [playerName, setPlayerName] = useState(initialName);
   let [isEditing, setIsEditing] = useState(false);
 
+  // Handle the edit button click
   const handleEditClick = () => {
     setIsEditing((editing) => !editing);
     if (isEditing) {
@@ -16,13 +18,15 @@ export default function Player({
     }
   };
 
+  // Handle changes to the input field
   const handleChange = (event) => {
     setPlayerName(event.target.value);
   };
 
+  // Conditionally render the player name as a span or input field
   let editablePlayerName = <span className="player-name">{playerName}</span>;
   if (isEditing) {
-    // example of two-way binding
+    // Example of two-way binding
     editablePlayerName = (
       <input type="text" required value={playerName} onChange={handleChange} />
     );
